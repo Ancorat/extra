@@ -14,9 +14,3 @@ def _():
     g.TWEETS.append(tweet)
     return redirect("/tweets")
 
-def delete_function():
-    tweet_id = request.forms.get("tweet_id")
-    for index, tweet in enumerate(g.TWEETS):
-        if tweet["tweet_id"] == tweet_id:
-            g.TWEETS.pop(index)
-            return redirect("/tweets")
