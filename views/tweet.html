@@ -1,12 +1,18 @@
 % include("header")
 <main>
-<form action="">
-
-<div>Title:</div>
-
-<div>Description:</div>
-
+<form action="/create_tweet" method="post">
+    <input type="text" name="tweet_id">
+    <input type="text" name="tweet_title" placeholder="title">
+    <input type="text" name="tweet_description" placeholder="description">
+    <button>Create Tweet</button>
 </form>
+% for tweet in tweets:
+
+<div>Title:{{tweet["tweet_title"]}}</div>
+ 
+<div>Description:{{tweet["tweet_description"]}}</div>
+
+% end
 </main>
 </body>
 </html>
