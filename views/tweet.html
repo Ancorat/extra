@@ -1,20 +1,29 @@
 % include("header")
 <main>
 <form action="/create_tweet" method="post">
-    <input type="text" name="tweet_id">
+    <input type="hidden" name="tweet_id">
     <input type="text" name="tweet_title" placeholder="title">
     <input type="text" name="tweet_description" placeholder="description">
     <button>Create Tweet</button>
 </form>
 % for tweet in tweets:
-
+<form action="/delete_tweet/<tweet_id>" method="post">
+<input type="hidden" name="tweet_id" value='{{tweet["tweet_id"]}}'>
 <div>Title:{{tweet["tweet_title"]}}</div>
  
 <div>Description:{{tweet["tweet_description"]}}</div>
 
 <button>Delete</button>
+</form>
 
+<form action="/update_tweet/<tweet_id>" method="post">
+    <input type="hidden" name="tweet_id" value='{{tweet["tweet_id"]}}'>
+    <input type="text" name="tweet_title" placeholder="title" value='{{tweet["tweet_title"]}}'>
+    <input type="text" name="tweet_description" placeholder="description" value='{{tweet["tweet_description"]}}'>
+    <button>Edit</button>
+</form>
 % end
+
 </main>
 </body>
 </html>
