@@ -1,23 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
 </head>
+
 <body>
+
+    <div>
+    % if error == "user_email":
+    <div class="error">
+    <p>Invalid email format</p>
+    </div> 
+    % end
+
+    % if error == "user_password":
+    <div class="error">
+        <p>Password length must be at least 8 characters</p>
+    </div>
+    % end
+
+
+    % if error == "first_name":
+    <div class="error">
+        <p>First name must be between 2 and 60 characters</p>
+    </div>
+    % end
+
+    % if error == "last_name":
+    <div class="error">
+        <p>Last name must be between 2 and 60 characters</p>
+    </div>
+    % end
+</div>
+
+<h1>Signup</h1>
+
+
     <form action="/signup" method="post">
     <label for="email">email</label>
-    <input type="text" name="user_email" placeholder="email" required>
+    <input type="text" name="user_email" placeholder="email"  value="{{user_email or ''}}" required>
     <label for="first_name">First Name</label>
-    <input type="text" name="first_name" required>
+    <input type="text" name="first_name" value="{{first_name or ''}}" required>
     <label for="last_name">Last Name</label>
-    <input type="text" name="last_name" required>
+    <input type="text" name="last_name" value="{{last_name or ''}}" required>
     <label for="password">password</label>
     <input type="password" name="user_password" placeholder="password" required>
+
     <button>Sign Up</button>
     </form>
 
+    <div>
+        <h3>Already have an account? <a href="/login"> Log in</a></h3>
+    </div>
+
 </body>
+
 </html>
